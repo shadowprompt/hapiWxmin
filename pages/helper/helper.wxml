@@ -1,0 +1,5 @@
+<view class="sptcc">
+  <input type="number" maxlength="20" placeholder="{{searchPlaceHolder}}" bindinput ="cardNoInput"/>
+  <button bindtap="sptccSearch">{{searchLabel}}</button>
+  <text class="balance">{{balance}}</text>
+</view>
