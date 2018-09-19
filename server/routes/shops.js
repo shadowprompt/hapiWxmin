@@ -32,9 +32,8 @@ module.exports = [{
         auth: false,
         description: '获取店铺列表',
         validate: {
-          query: {
-            ...paginationDefine
-          }
+          
+          query: Object.assign({}, paginationDefine),
         }
       },
   },
@@ -65,9 +64,7 @@ module.exports = [{
         params: {
           shopId: Joi.string().required().description('店铺的id'),
         },
-        query: {
-          ...paginationDefine,
-        },
+        query: Object.assign({}, paginationDefine),
       },
     },
   },

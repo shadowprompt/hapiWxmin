@@ -3,7 +3,7 @@ module.exports = [
     method: 'GET',
     path: '/',
     handler: (request, reply) => {
-      reply('hello hapi');
+      reply('hello hapi server');
     },
     config: {
       tags: ['api', 'tests'],
