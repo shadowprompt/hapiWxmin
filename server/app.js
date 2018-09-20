@@ -1,7 +1,8 @@
 const Hapi = require('hapi');
 const envs = require('./env.json');
-const setProcess =  require('./utils/setProcess');
-setProcess(envs);
+// const setProcess =  require('./utils/setProcess');
+// setProcess(envs);
+require('env2')('./.env');
 const config = require('./config');
 const routesHelloHapi = require('./routes/hello-hapi');
 const routesShops = require('./routes/shops');

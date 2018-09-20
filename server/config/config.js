@@ -1,11 +1,13 @@
 const setProcess =  require('../utils/setProcess');
 
 if (process.env.NODE_ENV === 'production') {
-  const envs = require('../env.prod.json');
-  setProcess(envs);
+  // const envs = require('../env.prod.json');
+  // setProcess(envs);
+  require('env2')('./.env.prod');
 } else {
-  const envs = require('../env.json');
-  setProcess(envs);
+  // const envs = require('../env.json');
+  // setProcess(envs);
+  require('env2')('./.env');
 }
 
 const {
