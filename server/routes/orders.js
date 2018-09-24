@@ -104,6 +104,11 @@ module.exports = [
       });
       // result 是一个 xml 结构的 response，转换为 jsonObject，并返回前端
       xml2js.parseString(result.data, (err, parsedResult) => {
+        if(err) {
+          console.log('出错了 ', err);
+          reply('出错了');
+          return;
+        }
         if (parsedResult.xml) {
           if (parsedResult.xml.return_code[0] === 'SUCCESS'
           && parsedResult.xml.result_code[0] === 'SUCCESS') {
@@ -136,7 +141,12 @@ module.exports = [
     method: 'POST',
     path: `/${GROUP_NAME}/pay/notify`,
     handler: async (request, reply) => {
+      console.log('payload ', request.payload, typeof request.payload);
       xml2js.parseString(request.payload, async (err, parsedResult) => {
+        if(err) {
+          console.log('出错了 ', err);
+          return;
+        }
         if (parsedResult.xml.return_code[0] === 'SUCCESS') {
           // 微信统一支付状态成功，需要检验本地数据的逻辑一致性
           // 省略...细节逻辑校验

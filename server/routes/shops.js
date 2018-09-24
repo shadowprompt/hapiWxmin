@@ -1,41 +1,35 @@
 const Joi = require('joi');
-const models = require("../models");
-const {
-  paginationDefine
-} = require('../utils/router-helper');
+const { paginationDefine } = require('../utils/router-helper');
+const models = require('../models');
 
 const GROUP_NAME = 'shops';
 
-module.exports = [{
+module.exports = [
+  {
     method: 'GET',
     path: `/${GROUP_NAME}`,
     handler: async (request, reply) => {
-        const {
-          rows: results,
-          count: totalCount
-        } = await models.shops.findAndCountAll({
-          attributes: [
-            'id',
-            'name',
-          ],
-          limit: request.query.limit,
-          offset: (request.query.page - 1) * request.query.limit,
-        });
-        // 开启分页的插件，返回的数据结构里，需要带上 result 与 totalCount 两个字段
-        reply({
-          results,
-          totalCount
-        });
+      const { rows: results, count: totalCount } = await models.shops.findAndCountAll({
+        attributes: [
+          'id',
+          'name',
+        ],
+        limit: request.query.limit,
+        offset: (request.query.page - 1) * request.query.limit,
+      });
+      // 开启分页的插件，返回的数据结构里，需要带上result与totalCount两个字段
+      reply({ results, totalCount });
+    },
+    config: {
+      tags: ['api', GROUP_NAME],
+      auth: false,
+      description: '获取店铺列表',
+      validate: {
+        query: {
+          ...paginationDefine,
+        },
       },
-      config: {
-        tags: ['api', GROUP_NAME],
-        auth: false,
-        description: '获取店铺列表',
-        validate: {
-          
-          query: Object.assign({}, paginationDefine),
-        }
-      },
+    },
   },
   {
     method: 'GET',
@@ -59,12 +53,15 @@ module.exports = [{
     },
     config: {
       tags: ['api', GROUP_NAME],
+      auth: false,
       description: '获取店铺的商品列表',
       validate: {
         params: {
           shopId: Joi.string().required().description('店铺的id'),
         },
-        query: Object.assign({}, paginationDefine),
+        query: {
+          ...paginationDefine,
+        },
       },
     },
   },
