@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "env2": "^2.2.2",
+    "express": "^4.16.3",
     "hapi": "^16.6.3",
     "hapi-auth-jwt2": "^7.4.1",
     "hapi-pagination": "^1.22.0",
@@ -21,6 +22,7 @@
     "inert": "^4.2.1",
     "joi": "^13.6.0",
     "jsonwebtoken": "^8.3.0",
+    "mysql": "^2.16.0",
     "mysql2": "^1.6.1",
     "package": "^1.0.1",
     "sequelize": "^4.38.1",
