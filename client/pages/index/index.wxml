@@ -6,13 +6,35 @@
   </view>
   <view>
     <button open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">微信登录</button>
+    <button open-type="getUserInfo" bindgetuserinfo="onGotUserInfoForce">
+    微信强制登录
+    </button>
+    <button bindtap="getUnionId">获取UnionId</button>
+    <button bindtap="checkSessionKeyValidate">检测session_key是否合法</button>
+    <button bindtap="testSubmitAll">群发模板消息</button>
+    {{openid2}}
+  </view>
+  <form bind:submit="testSubmit" report-submit="true">
+    <button formType="submit">发送模板消息</button>
+    {{openid}}
+  </form>
+  <form bind:submit="getFormId" report-submit="true">
+    <button formType="submit">存储formId</button>
+  </form>
+  <view>
+    <button bindtap="getSubscribe">订阅消息</button>
   </view>
   <open-data type="userNickName"></open-data>
   <open-data type="userAvatarUrl" lang="zh_CN"></open-data>
   <view  bindtap="bindSptccTap" class="usersptcc">
     <text>{{sptcc}}</text>
   </view>
+  <view wx:for="{{listData}}"  wx:key="*this">
+  {{index}}、 {{item.name}} -- {{Date.now()}}
+  </view>
+  <view>{{shopStatus}}</view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
+  <head id="test"></head>
 </view>

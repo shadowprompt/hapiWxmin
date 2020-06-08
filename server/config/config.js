@@ -1,13 +1,14 @@
+const path = require('path');
 const setProcess =  require('../utils/setProcess');
 
 if (process.env.NODE_ENV === 'production') {
   // const envs = require('../env.prod.json');
   // setProcess(envs);
-  require('env2')('./.env.prod');
+  require('env2')( path.resolve(__dirname, '../.env.prod'));
 } else {
   // const envs = require('../env.json');
   // setProcess(envs);
-  require('env2')('./.env');
+  require('env2')( path.resolve(__dirname, '../.env'));
 }
 
 const {

@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "head": "../../components/test/index"
+  }
+}
