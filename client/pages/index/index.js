@@ -22,7 +22,7 @@ Page({
     } = detail;
     // 通过后端服务器来请求openid
     const res = await util.http({
-      url: `https://www.daozhao.com.cn/wxmin/login`, // 我们的服务端地址
+      url: `/wxmin/login`, // 我们的服务端地址
       method: 'POST',
       data: {
         code,
@@ -44,7 +44,7 @@ Page({
     iv
   }) {
     const result = await util.http({
-      url: 'https://www.daozhao.com.cn/wxmin/decryptData',
+      url: '/wxmin/decryptData',
       method: 'POST',
       data: {
         encryptedData,
@@ -66,7 +66,7 @@ Page({
   },
   async getFormId(event) {
     const res = await util.http({
-      url: 'https://www.daozhao.com.cn/wxmin/storeFormId',
+      url: '/wxmin/storeFormId',
       data: {
         template_id: 'd3NWLnTMLfchQNZPbn1AF2xQ4PHCC7_gbIOKbymk7mk',
         formId: event.detail.formId,
@@ -80,7 +80,7 @@ Page({
   async testSubmitAll() {
     console.log('testSubmitAll');
     const res = await util.http({
-      url: 'https://www.daozhao.com.cn/wxmin/pushAll',
+      url: '/wxmin/pushAll',
       data: {
         template_id: 'd3NWLnTMLfchQNZPbn1AF2xQ4PHCC7_gbIOKbymk7mk',
       },
@@ -107,7 +107,7 @@ Page({
   async getAccessToken(openid, event) {
     const self = this;
     const res = await util.http({
-      url: 'https://www.daozhao.com.cn/wxmin/getAccessToken',
+      url: '/wxmin/getAccessToken',
       method: 'POST',
     });
     if (util.httpSuccess(res)) {
@@ -116,7 +116,7 @@ Page({
     }
   },
   async sendMsg(openid, event) {
-    const url = 'https://www.daozhao.com.cn/wxmin/push';
+    const url = '/wxmin/push';
     let _jsonData = {
       template_id: 'd3NWLnTMLfchQNZPbn1AF2xQ4PHCC7_gbIOKbymk7mk',
       form_id: event.detail.formId,
@@ -215,7 +215,7 @@ Page({
   },
   async sendSubscribe() {
     const res = await util.http({
-      url: 'https://www.daozhao.com.cn/wxmin/storeFormId',
+      url: '/wxmin/storeFormId',
       data: {
         template_id: 'd3NWLnTMLfchQNZPbn1AF2xQ4PHCC7_gbIOKbymk7mk',
         formId: event.detail.formId,

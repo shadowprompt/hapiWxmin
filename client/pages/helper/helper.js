@@ -21,7 +21,7 @@ Page({
       balance: '余额查询中...'
     });
     wx.request({
-      url: 'https://www.daozhao.com.cn/get', //上海公交卡余额查询接口地址
+      url: '/get', //上海公交卡余额查询接口地址
       data: {
         "cardNo": that.data.cardNo
       },
@@ -46,7 +46,7 @@ Page({
             balance: '查询失败'
           });
         }
-        
+
       }
     })
   }

@@ -21,6 +21,7 @@ const http = (option) => {
   return new Promise((resolve, reject) => {
     wx.request({
       ...option,
+      url: 'https://api.daozhao.com' + option.url,
       header: {
         Authorization: wx.getStorageSync('token').data
       },
